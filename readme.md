@@ -3,9 +3,9 @@
 
 HOWTO:
 
-1. fillin your config.ini
-2. send the your command email to your imap account
-3. done
+1. Fillin your config.ini
+2. Send the your command email to your imap account
+3. Run check_email.py by Python3 or later
 
 
 Email format:
