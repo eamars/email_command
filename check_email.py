@@ -77,7 +77,10 @@ for id in ids:
         # process command
         print("Subject:", m.subject)
         print("Sender:", "{} <{}>".format(m.sender[0], m.sender[1]))
+        print("Executing commands", end='')
+        sys.stdout.flush()
         reply = process_command(m.text)
+        print(" -- done")
         print(reply)
 
         # reply message
