@@ -6,9 +6,9 @@ import getpass
 import os
 
 def send_reply(server, message, reply):
-    text = ""
+    text = "Note: You may need to restore line breaks in Outlook.\r\n\r\n"
     for item in reply:
-        text += "{user}@{machine}:{pwd}$ {cmd} \r\n {out} \r\n ".format(
+        text += "{user}@{machine}:{pwd}$ {cmd}\r\n{out}\r\n".format(
                 user=getpass.getuser(),
                 machine=platform.node(),
                 pwd=os.getcwd(),
