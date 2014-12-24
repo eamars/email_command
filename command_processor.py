@@ -10,16 +10,16 @@ def cmd_filter(text):
 
 
 def cmd_exec(cmds):
-    outputs = {"Host": platform.platform()}
+    outputs = [("Host", platform.platform())]
     for cmd in cmds:
         try:
             process = subprocess.Popen(cmd.split(),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE)
             out = process.communicate()[0]
-            outputs[cmd] = out.decode('utf-8').strip()
+            outputs.append((cmd, out.decode('utf-8').strip()))
         except Exception as e:
-            outputs[cmd] = str(e)
+            outputs.append((cmd, str(e)))
     return outputs
 
 def process_command(text):
