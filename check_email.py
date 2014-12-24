@@ -50,7 +50,7 @@ print(" -- done")
 
 # List all folders in mailbox
 mailbox.list()
-mailbox.select(readonly=0) # default to inbox
+mailbox.select(readonly=1) # default to inbox
 
 # Search for any of unread
 criterion = "(UNSEEN)"
