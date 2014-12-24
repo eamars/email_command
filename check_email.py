@@ -93,7 +93,7 @@ for id in ids:
         print("Set command email as SEEN", end='')
         sys.stdout.flush()
         (retcode, data) = mailbox.uid("STORE", id, "+FLAGS", "(\\Seen)")
-        print(" --", retcode, data)
+        print(" --", retcode, [d.decode() for d in data])
         print()
 
 
