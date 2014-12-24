@@ -81,11 +81,13 @@ for id in ids:
 
         # reply message
         print("Sending reply", end='')
+        sys.stdout.flush()
         send_reply(sendbox, m, reply)
         print(" -- done")
 
         # Mark as read
         print("Set command email as SEEN", end='')
+        sys.stdout.flush()
         (retcode, data) = mailbox.uid("STORE", id, "+FLAGS", "(\\Seen)")
         print(" --", retcode, data)
 
