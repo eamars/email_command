@@ -50,7 +50,7 @@ print(" -- done")
 
 # List all folders in mailbox
 mailbox.list()
-mailbox.select(readonly=1) # default to inbox
+mailbox.select(readonly=0) # default to inbox
 
 # Search for any of unread
 criterion = "(UNSEEN)"
@@ -76,6 +76,7 @@ for id in ids:
     if m.subject == "COMMAND_EMAIL_SUBJECT":
         # process command
         print("Subject:", m.subject)
+        print("Sender:", "{} <{}>".format(m.sender[0], m.sender[1]))
         reply = process_command(m.text)
         print(reply)
 
@@ -90,6 +91,7 @@ for id in ids:
         sys.stdout.flush()
         (retcode, data) = mailbox.uid("STORE", id, "+FLAGS", "(\\Seen)")
         print(" --", retcode, data)
+        print()
 
 
 
