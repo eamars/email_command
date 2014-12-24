@@ -100,8 +100,12 @@ for id in ids:
 
 
 
+print("Logging out", end='')
+sys.stdout.flush()
 
 mailbox.close()
 sendbox.close()
 
 mailbox.logout()
+
+print(" -- done")
