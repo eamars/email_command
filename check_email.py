@@ -18,8 +18,43 @@ imap_usr = config["default"]["imap_usr"]
 imap_pwd = config["default"]["imap_pwd"]
 smtp_usr = config["default"]["smtp_usr"]
 smtp_pwd = config["default"]["smtp_pwd"]
+
+use_proxy = config["proxy"]["enable"]
+proxy_addr = config["proxy"]["proxy_addr"]
+proxy_port = config["proxy"]["proxy_port"]
+proxy_usr = config["proxy"]["proxy_usr"]
+proxy_pwd = config["proxy"]["proxy_pwd"]
+proxy_type = config["proxy"]["proxy_type"]
+
 print(" -- done")
 
+# use proxy
+if use_proxy == "true":
+    print("Configurating proxy", end='')
+    sys.stdout.flush()
+
+    import socks
+    import socket
+
+    if proxy_type == "PROXY_TYPE_SOCKS4":
+        s = socks.PROXY_TYPE_SOCKS4
+    else:
+        s = socks.PROXY_TYPE_SOCKS5
+
+    if proxy_usr != '' or proxy_pwd != '':
+        proxy_full_addr = "{}:{}@{}".format(proxy_usr, proxy_pwd, proxy_addr)
+    else:
+        proxy_full_addr = proxy_addr
+
+    # Override default socket settings
+    socks.setdefaultproxy(
+        s,
+        proxy_full_addr,
+        int(proxy_port),
+        True)
+
+    socket.socket = socks.socksocket
+    print(" -- done")
 
 # Connect to IMAP server
 print("Connecting to Gmail IMAP4", end='')
