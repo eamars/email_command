@@ -12,3 +12,7 @@ Email format:
 
 You need to specify your subject of your command email to "COMMAND\_EMAIL\_SUBJECT". Then you can insert any of your command enclosed by [command] and [/command]. The format of email can either be 'text/plain'(untested) or 'text/html'.
 
+
+Credits:
+
+PySocks: https://github.com/Anorov/PySocks
