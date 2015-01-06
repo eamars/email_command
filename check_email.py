@@ -71,14 +71,13 @@ print(" -- done")
 # Connect to SMTP server
 print("Connecting to Gmail SMTP", end='')
 sys.stdout.flush()
-sendbox = smtplib.SMTP(smtp_addr)
+sendbox = smtplib.SMTP_SSL(smtp_addr)
 print(" -- done")
 
 # Login to SMTP server
 print("Authorizing SMTP", end='')
 sys.stdout.flush()
 sendbox.ehlo()
-sendbox.starttls()
 sendbox.login(smtp_usr, smtp_pwd)
 print(" -- done")
 
